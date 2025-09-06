@@ -1,0 +1,2 @@
+accuracy,macro_f1,auroc_ood,num_test_samples,num_in_domain,num_ood
+0.9266666666666666,0.9214988041515377,0.8958993333333333,5500,4500,1000

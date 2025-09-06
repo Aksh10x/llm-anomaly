@@ -1,0 +1,44 @@
+# Model Configuration
+model:
+  name: "distilbert-base-uncased"
+  max_length: 128
+  num_labels: 151
+
+# LoRA Configuration
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+  target_modules: ["q_lin", "v_lin"]
+  modules_to_save: []  # Don't save classification head
+
+# Training Configuration
+training:
+  learning_rate: 0.0002
+  batch_size: 32
+  num_epochs: 3
+  warmup_steps: 500
+  weight_decay: 0.01
+  gradient_accumulation_steps: 1
+  
+# Data Configuration
+data:
+  dataset_name: "clinc_oos"
+  train_split: "train"
+  validation_split: "validation"
+  test_split: "test"
+
+# Evaluation Configuration
+evaluation:
+  batch_size: 64
+  ood_threshold: 0.5
+
+# Output Configuration
+output:
+  model_dir: "./model_output"
+  results_dir: "./reports"
+  save_strategy: "epoch"
+  
+# Other
+seed: 42
+device: "auto"  # auto-detect GPU/CPU
